@@ -1,0 +1,420 @@
+/* ==========================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL (ESTILO GIRLY & MODERNO)
+   ================================---------- */
+:root {
+    --bg-primary: #fff5f7;       /* Fondo general rosita muy suave */
+    --bg-card: #ffffff;          /* Fondo de tarjetas y formularios */
+    --text-main: #4a3b4c;        /* Texto principal gris/morado oscuro suave */
+    --text-muted: #8c788e;       /* Texto secundario */
+    --pink-primary: #ff6584;     /* Rosa vibrante principal */
+    --pink-hover: #ff476e;       /* Hover de botones principales */
+    --pink-light: #ffe3e8;       /* Fondos sutiles o badges */
+    --purple-accent: #a370f7;    /* Acento lila/violeta moderno */
+    --border-color: #ffd6df;     /* Bordes delicados */
+    --shadow-soft: 0 10px 25px -5px rgba(255, 101, 132, 0.12);
+    --radius-main: 20px;
+    --radius-sm: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   ENCABEZADO (HEADER)
+   ================================---------- */
+.encabezado {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    background: linear-gradient(135deg, #fff0f3 0%, #ffe3e8 100%);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--pink-primary);
+}
+
+.encabezado p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-top: 0.3rem;
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL
+   ================================---------- */
+.contenedor {
+    max-width: 850px;
+    width: 92%;
+    margin: 2rem auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* ==========================================
+   TARJETAS Y FORMULARIOS GENERALES
+   ================================---------- */
+.card-form, 
+.formulario {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: var(--radius-main);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+}
+
+.card-form h2,
+.intro h1 {
+    font-size: 1.75rem;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+}
+
+.subtitle,
+.intro p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: -1rem;
+}
+
+.etiqueta {
+    display: inline-block;
+    background-color: var(--pink-light);
+    color: var(--pink-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+   ESTILOS DE CAMPOS Y ENTRADAS
+   ================================---------- */
+.form-group, 
+.campo {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-main);
+}
+
+.obligatorio {
+    color: var(--pink-primary);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: #faf6f7;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--pink-primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 101, 132, 0.15);
+}
+
+.fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 600px) {
+    .fila {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   BOTONES
+   ================================---------- */
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-primary,
+.boton-enviar {
+    background-color: var(--pink-primary);
+    color: white;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(255, 101, 132, 0.3);
+}
+
+.btn-primary:hover,
+.boton-enviar:hover {
+    background-color: var(--pink-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--pink-light);
+    color: var(--pink-primary);
+    border: 2px solid var(--border-color);
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background-color: #ffd6df;
+}
+
+/* ==========================================
+   CHECKBOX Y NOTAS
+   ================================---------- */
+.checkbox-campo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: normal;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    cursor: pointer;
+}
+
+.checkbox-campo input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--pink-primary);
+    cursor: pointer;
+}
+
+.nota {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+/* ==========================================
+   VISTA PREVIA DE IMAGEN
+   ================================---------- */
+#vista-previa-container {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--pink-light);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+#vista-previa {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-top: 0.5px;
+}
+
+/* ==========================================
+   CATÁLOGO / TARJETAS DE SERIES DINÁMICAS
+   ================================---------- */
+.catalog-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-main);
+    border-left: 4px solid var(--pink-primary);
+    padding-left: 0.5rem;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Clases generadas dinámicamente desde JS para las tarjetas de series */
+.card-serie {
+    background: var(--bg-card);
+    border-radius: var(--radius-main);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-serie:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px -5px rgba(255, 101, 132, 0.2);
+}
+
+.card-serie img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    background-color: var(--pink-light);
+}
+
+.card-body {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.card-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.badge-genero {
+    background-color: var(--pink-light);
+    color: var(--pink-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.score {
+    color: #f59e0b; /* Color estrella brillante */
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.badge-tipo {
+    font-size: 0.8rem;
+    color: var(--purple-accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.card-resena {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    flex: 1;
+}
+
+.card-autor {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px dashed var(--border-color);
+    padding-top: 0.6rem;
+    margin-top: 0.4rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1.2rem 1.2rem 1.2rem;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+}
+
+.btn-edit {
+    background-color: #f3e8ff;
+    color: var(--purple-accent);
+}
+
+.btn-edit:hover {
+    background-color: #e9d5ff;
+}
+
+.btn-delete {
+    background-color: var(--pink-light);
+    color: var(--pink-primary);
+}
+
+.btn-delete:hover {
+    background-color: #ffd6df;
+}
+
+/* ==========================================
+   PIE DE PÁGINA (FOOTER)
+   ================================---------- */
+.pie {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff0f3;
+    border-top: 2px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 3rem;
+}

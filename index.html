@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recomenda+ | Películas y series</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Configuración PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+
+    <header class="encabezado">
+        <a class="logo" href="index.html">Recomenda<span>+</span></a>
+        <p>Películas y series que vale la pena descubrir.</p>
+    </header>
+
+    <main class="contenedor">
+
+         <!-- SECCIÓN DE LOGIN / REGISTRO (VISIBLE SI NO HAY SESIÓN) -->
+        <section id="sec-auth" class="card-form">
+        <h2>Ingresar a SeriesApp</h2>
+        <p class="subtitle">Iniciá sesión o registrate para publicar tus recomendaciones</p>
+
+        <form id="form-auth">
+            <div class="form-group">
+            <label for="auth-email">Correo Electrónico</label>
+            <input type="email" id="auth-email" placeholder="alumno@escuela.edu.ar" required>
+            </div>
+
+            <div class="form-group">
+            <label for="auth-password">Contraseña</label>
+            <input type="password" id="auth-password" placeholder="******" minlength="6" required>
+            </div>
+
+            <div class="auth-buttons">
+            <button type="button" id="btn-login" class="btn-primary">Iniciar Sesión</button>
+            <button type="button" id="btn-register" class="btn-secondary">Registrarse</button>
+            </div>
+        </form>
+        </section>
+
+        <section class="intro">
+            <span class="etiqueta">COMPARTÍ LO QUE TE GUSTA</span>
+            <h1 id="titulo-form">Recomendá una película o serie</h1>
+            <p>
+                ¿Viste algo que te encantó? Compartí tu opinión
+                y ayudá a otras personas a encontrar su próxima
+                historia favorita.
+            </p>
+        </section>
+
+        <form id="form-serie" class="formulario" action="#" method="post">
+            <input type="hidden" id="serie-id">
+
+            <div class="campo">
+                <label for="titulo">Título <span class="obligatorio">*</span></label>
+                <input type="text" id="titulo" name="titulo"
+                       placeholder="Ej.: Enola Holmes" required>
+            </div>
+
+            <div class="fila">
+                <div class="campo">
+                    <label for="tipo">Tipo de contenido <span class="obligatorio">*</span></label>
+                    <select id="tipo" name="tipo" required>
+                        <option value="" disabled selected>Elegí una opción</option>
+                        <option value="pelicula">Película</option>
+                        <option value="serie">Serie</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="genero">Género <span class="obligatorio">*</span></label>
+                    <select id="genero" name="genero" required>
+                        <option value="" disabled selected>Elegí un género</option>
+                        <option value="accion">Acción</option>
+                        <option value="aventura">Aventura</option>
+                        <option value="comedia">Comedia</option>
+                        <option value="drama">Drama</option>
+                        <option value="fantasia">Fantasía</option>
+                        <option value="ciencia-ficcion">Ciencia ficción</option>
+                        <option value="terror">Terror</option>
+                        <option value="romance">Romance</option>
+                        <option value="suspenso">Suspenso</option>
+                        <option value="animacion">Animación</option>
+                        <option value="documental">Documental</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="puntuacion">Tu puntuación <span class="obligatorio">*</span></label>
+                <select id="puntuacion" name="puntuacion" required>
+                    <option value="" disabled selected>¿Cuánto te gustó?</option>
+                    <option value="1">★☆☆☆☆ — 1 de 5</option>
+                    <option value="2">★★☆☆☆ — 2 de 5</option>
+                    <option value="3">★★★☆☆ — 3 de 5</option>
+                    <option value="4">★★★★☆ — 4 de 5</option>
+                    <option value="5">★★★★★ — 5 de 5</option>
+                </select>
+            </div>
+
+            <!-- Selector de portada -->
+            <div class="campo">
+                <label for="imagen-file">Portada de la película o serie</label>
+                <input type="file" id="imagen-file" name="imagen"
+                       accept="image/*" class="form-control">
+                <small>Opcional: seleccioná una imagen desde tu computadora o celular.</small>
+
+                <div id="vista-previa-container" hidden>
+                    <p>Vista previa de la portada:</p>
+                    <img id="vista-previa"
+                         alt="Vista previa de la portada seleccionada"
+                         style="max-width: 200px; max-height: 280px; object-fit: contain;">
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="resena">Reseña <span class="obligatorio">*</span></label>
+                <textarea id="resena" name="resena" rows="4"
+                          placeholder="¿De qué trata? Contá un poco sin revelar spoilers..."
+                          required></textarea>
+            </div>
+
+            <label class="checkbox-campo" for="recomendacion-general">
+                <input type="checkbox" id="recomendacion-general"
+                       name="recomendacion_general" value="si">
+                <span>La recomendaría a cualquier persona</span>
+            </label>
+
+            <p class="nota">
+                <span class="obligatorio">*</span> Campos obligatorios
+            </p>
+
+            <p id="mensaje-formulario" role="status" aria-live="polite" hidden></p>
+
+            <button type="submit" class="boton-enviar">
+                Publicar recomendación →
+            </button>
+
+        </form>
+
+
+        <section class="catalog-section">
+            <h2>Series Recomendadas</h2>
+            <div id="grid-series" class="grid-cards">
+                <!-- Las tarjetas se cargarán dinámicamente desde JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="pie">
+        <p>© 2026 Recomenda+ · Películas y series para descubrir.</p>
+    </footer>
+
+    <script src="supabaseClient.js"></script>
+    <script src="./script.js"></script>
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "short_name": "MiApp",
+  "name": "Mi aplicación",
+  "icons": [
+    {
+      "src": "./icono.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "scope": "./",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "display": "standalone",
+  "orientation": "portrait"
+}
